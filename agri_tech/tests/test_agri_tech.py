@@ -4,21 +4,20 @@
 
 import pytest
 
+# from agri_tech import agri_tech
+from agri_tech.agri_tech import Lidar
 
-from agri_tech import agri_tech
-
-
-@pytest.fixture
-def response():
-    """Sample pytest fixture.
-
-    See more at: http://doc.pytest.org/en/latest/fixture.html
-    """
-    # import requests
-    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
+from geopandas import GeoDataFrame, GeoSeries, read_file
+from geopandas.testing import assert_geodataframe_equal, assert_geoseries_equal
 
 
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
+
+
+class TestDataFrame:
+    def test_df_init(self):
+        lidar = Lidar()
+        assert type(lidar.geodf('spatial_subset.geojson')) is GeoDataFrame
+        
+    def test_geo_colname(self):
+        lidar = Lidar()
+        assert lidar.geodf('Agritech/agri_tech/agri_tech/spatial_subset.geojson')._geometry_column_name == "geometry"
