@@ -46,11 +46,13 @@ The .geojson is used to create a geodataframe and the geometry of the dataset is
 The .tif file is plotted to produce a pixel image of the area. The .tif is also ised to generate the shapefile of the area.
 
 ## Installation
+
 The project requires installation of pdal wheel.
 
 pip install agri-tech==0.1.9
 
 ## Example
+
 import agri_tech
 
 from agri_tech import agri_tech
