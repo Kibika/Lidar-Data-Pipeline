@@ -45,6 +45,23 @@ The .geojson is used to create a geodataframe and the geometry of the dataset is
 
 The .tif file is plotted to produce a pixel image of the area. The .tif is also ised to generate the shapefile of the area.
 
+## Installation
+The project requires installation of pdal wheel.
+pip install agri-tech==0.1.9
+
+## Example
+import agri_tech
+from agri_tech import agri_tech
+
+method = agri_tech.Lidar()    # calls the Lidar class from the package
+method.region()               # allows user to choose the region they would like to analyse
+method.ept_json()             # returns the url to the lidar data of the region chosen
+method.pipeline(xmin = -93.756155,xmax = -93.747334, ymin = 41.918015, ymax = 41.921429)    # user inputs the coordinates of the area to analyse, the     coordinates used here belong to a farm in Iowa, USA. This method will also apply a crs to the co-ordinates the crs allowed currently is "epsg:4326"
+
+method.run_pipeline()         # reads the lidarr data from the url provided with 'ept_json method, writes and returns .las, .tif and geojson files 
+method.geodf('spatial_subset.geojson')     # reads the geojson from 'run_pipeline' and returns a geodataframe
+method.plot_raster('spatial_subset.tif')   # plots the .tif file using pixels to show high and low elevations
+method.plot3d()                            # returns a 3d plot of the area chosen
 
 
 
