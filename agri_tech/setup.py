@@ -41,6 +41,8 @@ setup(
     keywords='agri_tech',
     name='agri_tech',
     packages=find_packages(include=['agri_tech', 'agri_tech.*']),
+    package_data={'': ['filename.txt']},
+    include_package_data=True,
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/Kibika/agri_tech',
