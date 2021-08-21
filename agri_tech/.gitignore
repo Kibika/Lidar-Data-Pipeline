@@ -103,3 +103,6 @@ ENV/
 
 # IDE settings
 .vscode/
+
+agri_tech/agri_tech/spatial_subset.geojson
+agri_tech/tests/spatial_subset.geojson
