@@ -18,19 +18,17 @@ from ipywidgets import widgets
 import imageio
 import pathlib
 import matplotlib.pyplot as plt
-# import mapclassify as mc
 import numpy as np
 import laspy
 import rasterio
 from rasterio import mask
 from glob import glob
 from shapely.geometry import box
-# %matplotlib inline
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-# from mpl_toolkits.axes_grid1.axes_divider import make_axes_locatable
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
+import pkg_resources
 
 
 def read_text(text_path):
@@ -46,18 +44,19 @@ def read_text(text_path):
 
 class Lidar():
     def __init__(self):
-        self.text_path = 'filename.txt'
+#         self.text_path = 'filename.txt'
         self.PUBLIC_DATA = "https://s3-us-west-2.amazonaws.com/usgs-lidar-public/"
         self.output_file = 'spatial_subset.geojson'
         
     def region(self):
         self.output_slider_variable = widgets.Text()
-                
+        stream = pkg_resources.resource_filename(__name__, 'data/filename.txt')
+       
         # Define function to bind value of the input to the output variable 
         def f(x):
             self.output_slider_variable.value = str(x)
 
-        dropdown = interact(f, x=read_text(self.text_path))
+        dropdown = interact(f, x=read_text(stream))
         return self.output_slider_variable
 
     def ept_json(self):
