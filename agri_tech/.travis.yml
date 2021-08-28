@@ -14,7 +14,7 @@ before_install:
 # install:
 #   - pip install ".[test]" . # install package + test dependencies
 script:
-  - python3 -m pytest tests/test_agri_tech.py
+  -pytest tests/test_agri_tech.py
 # # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 # install: pip install -U tox-travis
 
