@@ -45,7 +45,7 @@ setup(
     include_package_data=True,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/Kibika/Lidar-Data-Pipeline',
+    url='https://github.com/Kibika/Lidar-Data-Pipeline/agri_tech',
     version='0.1.0',
     zip_safe=False,
 )
